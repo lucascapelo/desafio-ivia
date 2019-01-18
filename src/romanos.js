@@ -1,23 +1,29 @@
 module.exports = { 
     transformaRomano: function (numero) {
-        let numeroConvertido = ''
-        let contador
-        if(numero<1 && numero >4000)  
+        let numeroConvertido = '' //String que vai salvar o numero convertido em Romano
+        let contador //contador que vai guardar o resto inteiro da divisao das casas decimais
+        
+        if(numero<1 && numero >4000)  //Se nao estiver no range de numeros existentes
             return "Numero fora do range existente"
-        while(numero>0){
-            
-            if(numero>=1000) {
-                contador = parseInt(numero/1000)
-                numero -= contador *1000
-                numeroConvertido += ('M'.repeat (contador))
+        
+        while(numero>0){  
+            //basicamente irei isolar cada casa decimal testando quantas vezes eu a consigo dividir por cada Range
+            //Caso aquela casa decimal nao seja mais divisivel, o "Numero" guardará o resto inteiro da divisão
+            //E seguirá para o próximo range
+            //Exemplo
+            if(numero>=1000) {  //Checando se o número está dentro do Range 
+                contador = parseInt(numero/1000) //meu contador recebe a parte inteira da divisão do número pelo Range 
+                numero -= contador *1000 //Retira a parte contada do número operado 
+                numeroConvertido += ('M'.repeat (contador)) //Insere a quantidade da letra daquele Range * o contador
             }
-                
+             //Essa mesma lógica segue para cada Range abaixo
+
              if(numero >= 900 && numero < 1000) {
                 contador = parseInt(numero/900)
                 numero -= contador * 900
-                console.log('numero: ', numero)
+               
                 numeroConvertido += ('CM'.repeat (contador))
-                console.log('numeroConvertido: ', numeroConvertido)
+                
             }
 
             if(numero>=500 && numero < 900){
@@ -51,9 +57,9 @@ module.exports = {
             if(numero >= 50 && numero < 90){
                 contador = parseInt(numero/50)
                 numero -= contador *50
-                console.log('numero: ', numero)
+                
                 numeroConvertido += ('L'.repeat (contador))
-                console.log('numeroConvertido: ', numeroConvertido)
+               
             }
                 
 
@@ -67,9 +73,9 @@ module.exports = {
             if(numero >= 10 && numero < 40){
                 contador = parseInt(numero/10)
                 numero -= contador *10
-                console.log('numero: ', numero)
+                
                 numeroConvertido += ('X'.repeat (contador))
-                console.log('numeroConvertido: ', numeroConvertido)
+                
             }
                 
 
@@ -83,9 +89,9 @@ module.exports = {
             if(numero >= 5 && numero < 9){
                 contador = parseInt(numero/5)
                 numero -= contador *5
-                console.log('numero: ', numero)
+                
                 numeroConvertido += ('V'.repeat (contador))
-                console.log('numeroConvertido: ', numeroConvertido)
+                
             }
                 
 
@@ -97,15 +103,15 @@ module.exports = {
                 
 
             if(numero >=1 && numero < 4) {   
-                console.log('numero: ', numero)                             
+                                             
                 numeroConvertido += ('I'.repeat (numero))
-                console.log('numeroConvertido: ', numeroConvertido)
+                
                 numero = 0
             }
                 
         }
 
-        console.log(numeroConvertido)
+        
         return numeroConvertido
 
     }
